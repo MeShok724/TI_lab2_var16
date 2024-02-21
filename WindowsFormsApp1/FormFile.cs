@@ -3,18 +3,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormInput : Form
+    public partial class FormFile : Form
     {
-        public FormInput()
+        public FormFile()
         {
             InitializeComponent();
-            cbMethodEnc.SelectedIndex = 0;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Owner.Show();
-            this.Close();
         }
 
         private void cbMethodEnc_SelectedIndexChanged(object sender, EventArgs e)
@@ -30,6 +23,12 @@ namespace WindowsFormsApp1
                 tbKey2.Hide();
                 lKey1.Text = "Введите ключ:";
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Owner.Show();
+            this.Close();
         }
     }
 }

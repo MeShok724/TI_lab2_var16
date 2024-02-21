@@ -66,6 +66,7 @@
             this.btn_file.TabIndex = 2;
             this.btn_file.Text = "Файл";
             this.btn_file.UseVisualStyleBackColor = true;
+            this.btn_file.Click += new System.EventHandler(this.btn_file_Click);
             // 
             // btn_input
             // 
@@ -112,6 +113,7 @@
             this.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "FormSourceChoose";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Шпионский Шифратор";
             this.ResumeLayout(false);
         }

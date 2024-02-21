@@ -24,8 +24,13 @@ namespace WindowsFormsApp1
 
         private void btn_input_Click(object sender, EventArgs e)
         {
-            FormInput formInp = new FormInput();
-            formInp.Show();
+            new FormInput().Show(this);
+            this.Hide();
+        }
+
+        private void btn_file_Click(object sender, EventArgs e)
+        {
+            new FormFile().Show(this);
             this.Hide();
         }
     }
