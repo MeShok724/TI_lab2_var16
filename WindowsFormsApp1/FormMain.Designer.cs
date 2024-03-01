@@ -2,7 +2,7 @@
 
 namespace WindowsFormsApp1
 {
-    partial class FormInput
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -38,10 +38,14 @@ namespace WindowsFormsApp1
             this.tbKey2 = new System.Windows.Forms.TextBox();
             this.lKey2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tbInput = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.tbResult = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -83,14 +87,14 @@ namespace WindowsFormsApp1
             // 
             // tbKey2
             // 
-            this.tbKey2.Location = new System.Drawing.Point(649, 238);
+            this.tbKey2.Location = new System.Drawing.Point(1065, 113);
             this.tbKey2.Name = "tbKey2";
             this.tbKey2.Size = new System.Drawing.Size(304, 40);
             this.tbKey2.TabIndex = 5;
             // 
             // lKey2
             // 
-            this.lKey2.Location = new System.Drawing.Point(639, 183);
+            this.lKey2.Location = new System.Drawing.Point(1055, 58);
             this.lKey2.Name = "lKey2";
             this.lKey2.Size = new System.Drawing.Size(314, 33);
             this.lKey2.TabIndex = 4;
@@ -98,57 +102,99 @@ namespace WindowsFormsApp1
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(79, 409);
+            this.label4.Location = new System.Drawing.Point(79, 238);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(722, 45);
+            this.label4.Size = new System.Drawing.Size(990, 45);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Введите текст для шифрования или дешифрования:";
+            this.label4.Text = "Введите текст для шифрования/дешифрования или прочитайте из файла:";
             // 
-            // richTextBox1
+            // tbInput
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(79, 470);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(874, 211);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.tbInput.Location = new System.Drawing.Point(80, 421);
+            this.tbInput.Name = "tbInput";
+            this.tbInput.Size = new System.Drawing.Size(703, 218);
+            this.tbInput.TabIndex = 8;
+            this.tbInput.Text = "";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(80, 730);
+            this.button1.Location = new System.Drawing.Point(106, 708);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(270, 65);
             this.button1.TabIndex = 9;
             this.button1.Text = "Зашифровать";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(452, 730);
+            this.button2.Location = new System.Drawing.Point(483, 708);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(270, 65);
             this.button2.TabIndex = 10;
             this.button2.Text = "Дешифровать";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnClose
+            // tbResult
             // 
-            this.btnClose.Location = new System.Drawing.Point(830, 730);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(162, 65);
-            this.btnClose.TabIndex = 11;
-            this.btnClose.Text = "Назад";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.button3_Click);
+            this.tbResult.Location = new System.Drawing.Point(884, 421);
+            this.tbResult.Name = "tbResult";
+            this.tbResult.ReadOnly = true;
+            this.tbResult.Size = new System.Drawing.Size(703, 218);
+            this.tbResult.TabIndex = 13;
+            this.tbResult.Text = "";
             // 
-            // FormInput
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(884, 358);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(303, 45);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Полученный шифр:";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(80, 315);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(387, 65);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Выбрать файл...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(884, 708);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(361, 65);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "Сохранить в файл...";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(1339, 708);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(248, 65);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "Выход";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 844);
-            this.Controls.Add(this.btnClose);
+            this.ClientSize = new System.Drawing.Size(1678, 944);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.tbResult);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.tbInput);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbKey2);
             this.Controls.Add(this.lKey2);
@@ -158,18 +204,25 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "FormInput";
+            this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Шпионский Шифратор";
+            this.Text = "Шифратор";
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Button button5;
+
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+
+        private System.Windows.Forms.RichTextBox tbResult;
+        private System.Windows.Forms.Label label2;
+
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnClose;
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tbInput;
 
         private System.Windows.Forms.Label label4;
 
