@@ -48,17 +48,59 @@ namespace WindowsFormsApp1
                 }
             }
             int[] keyArr = KeyToNumbers(key);
-            StringBuilder sb = new StringBuilder();
+            StringBuilder cipher = new StringBuilder();
             for (int i = 0; i<keyArr.Length; i++)
             {
                 int col = Array.IndexOf(keyArr, i);
                 for (int row = 0; row < rowNumb; row++)
                 {
                     if (matrix[row,col] != '$')
-                        sb.Append(matrix[row,col]);
+                        cipher.Append(matrix[row,col]);
                 }
             }
-            return sb.ToString();
+            return cipher.ToString();
+        }
+
+        public static string ColumnDecipher(string cipher, string key1, string key2)
+        {
+            string temp = ColumnDecipherOneKey(cipher, key2);
+            string result = ColumnDecipherOneKey(temp, key1);
+            return result;
+        }
+
+        private static string ColumnDecipherOneKey(string cipher, string key)
+        {
+            int[] keyArr = KeyToNumbers(key);
+            int colNumb = key.Length;
+            int rowNumb = (int)Math.Ceiling((double)cipher.Length / colNumb);
+
+            char[,] matrix = new char[rowNumb, colNumb];
+            int index = 0;
+            for (int i = 0; i < keyArr.Length; i++)
+            {
+                int col = Array.IndexOf(keyArr, i);
+                for (int row = 0; row < rowNumb; row++)
+                {
+                    if (row * colNumb + col + 1 <= cipher.Length)
+                    {
+                        matrix[row, col] = cipher[index];
+                        index++;
+                    } else {
+                        matrix[row, col] = '$';
+                    }
+                }
+            }
+            StringBuilder message = new StringBuilder();
+            for (int i = 0; i < rowNumb; i++)
+            {
+                for (int j = 0; j < colNumb; j++)
+                {
+                    if (matrix[i,j] == '$')
+                        break;
+                    message.Append(matrix[i, j]);
+                }
+            }
+            return message.ToString();
         }
 
         private static int[] KeyToNumbers(string key)
@@ -81,6 +123,66 @@ namespace WindowsFormsApp1
             }
 
             return result;
+        }
+
+        public static string VizhinerCipher(string text, string keyParam)
+        {
+            int i = 0;
+            StringBuilder key = new StringBuilder(keyParam);
+            while (key.Length < text.Length)
+                key.Append(text[i++]);
+            StringBuilder cipher = new StringBuilder();
+            for(i = 0; i < text.Length; i++)
+            {
+                char curr = VizhinerEncriptChar(text[i], key[i]);
+                cipher.Append(curr);
+            }
+            return cipher.ToString();
+        }
+
+        private static char VizhinerEncriptChar(char curr, char keyCh)
+        {
+            curr = char.ToLower(curr);
+            keyCh = char.ToLower(keyCh);
+            int diff = (int)keyCh - (int)'а';
+            char res;
+            if ((int)curr + diff > (int)'я')
+            {
+                res = (char)((int)'а' + (int)curr + diff - (int)'я' - 1);
+            } else {
+                res = (char)((int)curr + diff);
+            }
+            return res;
+        }
+        
+        public static string VizhinerDecipher(string cipher, string keyParam)
+        {
+            StringBuilder key = new StringBuilder(keyParam);
+            StringBuilder message = new StringBuilder();
+            for(int i = 0; i < cipher.Length; i++)
+            {
+                char curr = VizhinerDecriptChar(cipher[i], key[i]);
+                message.Append(curr);
+                if (key.Length < cipher.Length)
+                {
+                    key.Append(curr);
+                }
+            }
+            return message.ToString();
+        }
+        private static char VizhinerDecriptChar(char curr, char keyCh)
+        {
+            curr = char.ToLower(curr);
+            keyCh = char.ToLower(keyCh);
+            int diff = (int)keyCh - (int)'а';
+            char res;
+            if ((int)curr - diff < (int)'а')
+            {
+                res = (char)((int)'я' - ((int)'а' - ((int)curr - diff)) + 1);
+            } else {
+                res = (char)((int)curr - diff);
+            }
+            return res;
         }
     }
 }

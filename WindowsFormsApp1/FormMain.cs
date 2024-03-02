@@ -54,18 +54,47 @@ namespace WindowsFormsApp1
             if (fileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = fileDialog.FileName;
-            string fileText = tbInput.Text;
+            string fileText = tbResult.Text;
             System.IO.File.WriteAllText(filename, fileText);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string text = tbInput.Text;
-            string key1 = tbKey1.Text;
-            string key2 = tbKey2.Text;
-            string cipher = Program.ColumnCipher(text, key1, key2);
-            tbResult.Text = cipher;
+            if (cbMethodEnc.SelectedIndex == 0)
+            {
+                string text = tbInput.Text;
+                string key1 = tbKey1.Text;
+                string key2 = tbKey2.Text;
+                string cipher = Program.ColumnCipher(text, key1, key2);
+                tbResult.Text = cipher;
+            }
+            else
+            {
+                string text = tbInput.Text;
+                string key = tbKey1.Text;
+                string cipher = Program.VizhinerCipher(text, key);
+                tbResult.Text = cipher;
+            }
+            
         }
-        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (cbMethodEnc.SelectedIndex == 0)
+            {
+                string text = tbInput.Text;
+                string key1 = tbKey1.Text;
+                string key2 = tbKey2.Text;
+                string cipher = Program.ColumnDecipher(text, key1, key2);
+                tbResult.Text = cipher;
+            }
+            else
+            {
+                string cipher = tbInput.Text;
+                string key = tbKey1.Text;
+                string message = Program.VizhinerDecipher(cipher,key);
+                tbResult.Text = message;
+            }
+        }
     }
 }
