@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -65,6 +65,8 @@ namespace WindowsFormsApp1
                 string text = tbInput.Text;
                 string key1 = tbKey1.Text;
                 string key2 = tbKey2.Text;
+                if (!CheckDataColumn(ref text, key1, key2))
+                    return;
                 string cipher = Program.ColumnCipher(text, key1, key2);
                 tbResult.Text = cipher;
             }
@@ -72,6 +74,8 @@ namespace WindowsFormsApp1
             {
                 string text = tbInput.Text;
                 string key = tbKey1.Text;
+                if (!CheckDataVizhiner(ref text, key))
+                    return;
                 string cipher = Program.VizhinerCipher(text, key);
                 tbResult.Text = cipher;
             }
@@ -82,19 +86,90 @@ namespace WindowsFormsApp1
         {
             if (cbMethodEnc.SelectedIndex == 0)
             {
-                string text = tbInput.Text;
+                string cipher = tbInput.Text;
                 string key1 = tbKey1.Text;
                 string key2 = tbKey2.Text;
-                string cipher = Program.ColumnDecipher(text, key1, key2);
-                tbResult.Text = cipher;
+                if (!CheckDataColumn(ref cipher, key1, key2))
+                    return;
+                string message = Program.ColumnDecipher(cipher, key1, key2);
+                tbResult.Text = message;
             }
             else
             {
                 string cipher = tbInput.Text;
                 string key = tbKey1.Text;
+                if (!CheckDataVizhiner(ref cipher, key))
+                    return;
                 string message = Program.VizhinerDecipher(cipher,key);
                 tbResult.Text = message;
             }
+        }
+
+        private bool CheckDataColumn(ref string text, string key1, string key2)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var i in text)
+            {
+                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                    sb.Append(i);
+            }
+
+            text = sb.ToString();
+            if (String.IsNullOrEmpty(key1))
+            {
+                MessageBox.Show("Ключ 1 не указан", "Ошибка!");
+                return false;
+            }
+            if (String.IsNullOrEmpty(key2))
+            {
+                MessageBox.Show("Ключ 2 не указан", "Ошибка!");
+                return false;
+            }
+            foreach (var i in key1)
+            {
+                if ((int)i <= (int)'А' || (int)i >= (int)'я')
+                {
+                    MessageBox.Show("Ключ 1 содержит недопустимые символы", "Ошибка!");
+                    return false;
+                }
+            }
+            foreach (var i in key2)
+            {
+                if ((int)i <= (int)'А' || (int)i >= (int)'я')
+                {
+                    MessageBox.Show("Ключ 2 содержит недопустимые символы", "Ошибка!");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        
+        private bool CheckDataVizhiner(ref string text, string key)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var i in text)
+            {
+                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                    sb.Append(i);
+            }
+
+            text = sb.ToString();
+            if (String.IsNullOrEmpty(key))
+            {
+                MessageBox.Show("Ключ не указан", "Ошибка!");
+                return false;
+            }
+            foreach (var i in key)
+            {
+                if ((int)i <= (int)'А' || (int)i >= (int)'я')
+                {
+                    MessageBox.Show("Ключ содержит недопустимые символы", "Ошибка!");
+                    return false;
+                }
+            }
+            
+            return true;
         }
     }
 }
