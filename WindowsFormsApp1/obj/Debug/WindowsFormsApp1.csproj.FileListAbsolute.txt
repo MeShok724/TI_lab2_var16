@@ -19,3 +19,13 @@ C:\BSUIR\TI\lab1new\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.cs
 C:\BSUIR\TI\lab1new\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\BSUIR\TI\lab1new\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\BSUIR\TI\lab1new\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormMain.resources
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormMain.resources
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\BSUIR\TI\lab1\TI_lab1_var10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

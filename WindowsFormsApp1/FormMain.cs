@@ -65,7 +65,7 @@ namespace WindowsFormsApp1
                 string text = tbInput.Text;
                 string key1 = tbKey1.Text;
                 string key2 = tbKey2.Text;
-                if (!CheckDataColumn(ref text, key1, key2))
+                if (!CheckDataColumn(ref text, ref key1, ref key2))
                     return;
                 string cipher = Program.ColumnCipher(text, key1, key2);
                 tbResult.Text = cipher;
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
             {
                 string text = tbInput.Text;
                 string key = tbKey1.Text;
-                if (!CheckDataVizhiner(ref text, key))
+                if (!CheckDataVizhiner(ref text, ref key))
                     return;
                 string cipher = Program.VizhinerCipher(text, key);
                 tbResult.Text = cipher;
@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
                 string cipher = tbInput.Text;
                 string key1 = tbKey1.Text;
                 string key2 = tbKey2.Text;
-                if (!CheckDataColumn(ref cipher, key1, key2))
+                if (!CheckDataColumn(ref cipher, ref key1, ref key2))
                     return;
                 string message = Program.ColumnDecipher(cipher, key1, key2);
                 tbResult.Text = message;
@@ -98,14 +98,14 @@ namespace WindowsFormsApp1
             {
                 string cipher = tbInput.Text;
                 string key = tbKey1.Text;
-                if (!CheckDataVizhiner(ref cipher, key))
+                if (!CheckDataVizhiner(ref cipher, ref key))
                     return;
                 string message = Program.VizhinerDecipher(cipher,key);
                 tbResult.Text = message;
             }
         }
 
-        private bool CheckDataColumn(ref string text, string key1, string key2)
+        private bool CheckDataColumn(ref string text, ref string key1, ref string key2)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var i in text)
@@ -115,59 +115,60 @@ namespace WindowsFormsApp1
             }
 
             text = sb.ToString();
-            if (String.IsNullOrEmpty(key1))
-            {
-                MessageBox.Show("Ключ 1 не указан", "Ошибка!");
-                return false;
-            }
-            if (String.IsNullOrEmpty(key2))
-            {
-                MessageBox.Show("Ключ 2 не указан", "Ошибка!");
-                return false;
-            }
+            StringBuilder sb1 = new StringBuilder();
             foreach (var i in key1)
             {
-                if ((int)i <= (int)'А' || (int)i >= (int)'я')
-                {
-                    MessageBox.Show("Ключ 1 содержит недопустимые символы", "Ошибка!");
-                    return false;
-                }
+                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                    sb1.Append(i);
             }
+            if (sb1.Length==0)
+            {
+                MessageBox.Show("Ключ 1 не указан или не содержит допустимых символов", "Ошибка!");
+                return false;
+            }
+            key1 = sb1.ToString();
+            
+            StringBuilder sb2 = new StringBuilder();
             foreach (var i in key2)
             {
-                if ((int)i <= (int)'А' || (int)i >= (int)'я')
-                {
-                    MessageBox.Show("Ключ 2 содержит недопустимые символы", "Ошибка!");
-                    return false;
-                }
+                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                    sb2.Append(i);
             }
+            if (sb2.Length==0)
+            {
+                MessageBox.Show("Ключ 2 не указан или не содержит допустимых символов", "Ошибка!");
+                return false;
+            }
+            key2 = sb2.ToString();
 
             return true;
         }
         
-        private bool CheckDataVizhiner(ref string text, string key)
+        private bool CheckDataVizhiner(ref string text, ref string key)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var i in text)
             {
                 if ((int)i >= (int)'А' && (int)i <= (int)'я')
                     sb.Append(i);
+                if (Char.ToLower(i) == 'ё')
+                    sb.Append('е');
             }
 
             text = sb.ToString();
-            if (String.IsNullOrEmpty(key))
-            {
-                MessageBox.Show("Ключ не указан", "Ошибка!");
-                return false;
-            }
+            
+            StringBuilder sb1 = new StringBuilder();
             foreach (var i in key)
             {
-                if ((int)i <= (int)'А' || (int)i >= (int)'я')
-                {
-                    MessageBox.Show("Ключ содержит недопустимые символы", "Ошибка!");
-                    return false;
-                }
+                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                    sb1.Append(i);
             }
+            if (sb1.Length==0)
+            {
+                MessageBox.Show("Ключ не указан или не содержит допустимых символов", "Ошибка!");
+                return false;
+            }
+            key = sb1.ToString();
             
             return true;
         }
