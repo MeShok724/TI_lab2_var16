@@ -10,7 +10,9 @@ namespace WindowsFormsApp1
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
+        // [STAThread] 
+        private static char[] letters = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 
+            'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
         static void Main()
         {
             Application.EnableVisualStyles();
@@ -105,14 +107,15 @@ namespace WindowsFormsApp1
 
         private static int[] KeyToNumbers(string key)
         {
-            char[] sortArr = key.ToCharArray();
+            var key1 = key.ToLower();
+            char[] sortArr = key1.ToCharArray();
             Array.Sort(sortArr);
             int[] result = new int[key.Length];
             for (int i = 0; i < result.Length; i++)
                 result[i] = -1;
             for (int i = 0; i < key.Length; i++)
             {
-                char currCh = key[i];
+                char currCh = key1[i];
                 int pos = Array.IndexOf(sortArr, currCh);
                 if (result.Contains(pos))
                 {
@@ -144,14 +147,9 @@ namespace WindowsFormsApp1
         {
             curr = char.ToLower(curr);
             keyCh = char.ToLower(keyCh);
-            int diff = (int)keyCh - (int)'а';
+            int diff = Array.IndexOf(letters, keyCh);
             char res;
-            if ((int)curr + diff > (int)'я')
-            {
-                res = (char)((int)'а' + (int)curr + diff - (int)'я' - 1);
-            } else {
-                res = (char)((int)curr + diff);
-            }
+            res = letters[(Array.IndexOf(letters, curr) + diff) % letters.Length];
             return res;
         }
         
@@ -174,13 +172,13 @@ namespace WindowsFormsApp1
         {
             curr = char.ToLower(curr);
             keyCh = char.ToLower(keyCh);
-            int diff = (int)keyCh - (int)'а';
+            int diff = Array.IndexOf(letters, keyCh);
             char res;
-            if ((int)curr - diff < (int)'а')
+            if (Array.IndexOf(letters, curr) - diff < 0)
             {
-                res = (char)((int)'я' - ((int)'а' - ((int)curr - diff)) + 1);
+                res = letters[letters.Length + (Array.IndexOf(letters, curr) - diff)];
             } else {
-                res = (char)((int)curr - diff);
+                res = letters[Array.IndexOf(letters, curr) - diff];
             }
             return res;
         }

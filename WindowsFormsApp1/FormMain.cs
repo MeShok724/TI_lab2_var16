@@ -6,6 +6,8 @@ namespace WindowsFormsApp1
 {
     public partial class FormMain : Form
     {
+        private static char[] letters = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 
+            'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
         public FormMain()
         {
             InitializeComponent();
@@ -108,17 +110,19 @@ namespace WindowsFormsApp1
         private bool CheckDataColumn(ref string text, ref string key1, ref string key2)
         {
             StringBuilder sb = new StringBuilder();
+            text = text.ToLower();
             foreach (var i in text)
             {
-                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                if (Array.Exists(letters, element => element == i))
                     sb.Append(i);
             }
 
             text = sb.ToString();
             StringBuilder sb1 = new StringBuilder();
+            key1 = key1.ToLower();
             foreach (var i in key1)
             {
-                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                if (Array.Exists(letters, element => element == i))
                     sb1.Append(i);
             }
             if (sb1.Length==0)
@@ -129,9 +133,10 @@ namespace WindowsFormsApp1
             key1 = sb1.ToString();
             
             StringBuilder sb2 = new StringBuilder();
+            key2 = key2.ToLower();
             foreach (var i in key2)
             {
-                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                if (Array.Exists(letters, element => element == i))
                     sb2.Append(i);
             }
             if (sb2.Length==0)
@@ -147,20 +152,20 @@ namespace WindowsFormsApp1
         private bool CheckDataVizhiner(ref string text, ref string key)
         {
             StringBuilder sb = new StringBuilder();
+            text = text.ToLower();
             foreach (var i in text)
             {
-                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                if (Array.Exists(letters, element => element == i))
                     sb.Append(i);
-                if (Char.ToLower(i) == 'ё')
-                    sb.Append('е');
             }
 
             text = sb.ToString();
             
             StringBuilder sb1 = new StringBuilder();
+            key = key.ToLower();
             foreach (var i in key)
             {
-                if ((int)i >= (int)'А' && (int)i <= (int)'я')
+                if (Array.Exists(letters, element => element == i))
                     sb1.Append(i);
             }
             if (sb1.Length==0)
