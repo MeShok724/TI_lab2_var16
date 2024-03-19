@@ -71,6 +71,7 @@ namespace WindowsFormsApp1
             // 
             this.tbInput.Location = new System.Drawing.Point(80, 421);
             this.tbInput.Name = "tbInput";
+            this.tbInput.ReadOnly = true;
             this.tbInput.Size = new System.Drawing.Size(703, 218);
             this.tbInput.TabIndex = 8;
             this.tbInput.Text = "";
