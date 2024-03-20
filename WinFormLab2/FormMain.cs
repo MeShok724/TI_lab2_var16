@@ -28,6 +28,8 @@ namespace WindowsFormsApp1
 
         private void btnChoseFile_Click(object sender, EventArgs e)
         {
+            tbInput.Text = "";
+            tbResult.Text = "";
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Title = "Выберите файл для шифрования";
             if (fileDialog.ShowDialog() == DialogResult.Cancel)

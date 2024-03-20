@@ -53,32 +53,32 @@ namespace WindowsFormsApp1
             // 
             // tbKey
             // 
-            this.tbKey.Location = new System.Drawing.Point(79, 136);
+            this.tbKey.Location = new System.Drawing.Point(397, 58);
             this.tbKey.Name = "tbKey";
-            this.tbKey.Size = new System.Drawing.Size(304, 40);
+            this.tbKey.Size = new System.Drawing.Size(518, 40);
             this.tbKey.TabIndex = 3;
             this.tbKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbKey_KeyPress);
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(79, 238);
+            this.label4.Location = new System.Drawing.Point(80, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(990, 45);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Введите текст для шифрования/дешифрования или прочитайте из файла:";
+            this.label4.Text = "Выберите файл для шифровани/дешифрования:";
             // 
             // tbInput
             // 
-            this.tbInput.Location = new System.Drawing.Point(80, 421);
+            this.tbInput.Location = new System.Drawing.Point(79, 336);
             this.tbInput.Name = "tbInput";
             this.tbInput.ReadOnly = true;
-            this.tbInput.Size = new System.Drawing.Size(703, 218);
+            this.tbInput.Size = new System.Drawing.Size(703, 406);
             this.tbInput.TabIndex = 8;
             this.tbInput.Text = "";
             // 
             // btnEncript
             // 
-            this.btnEncript.Location = new System.Drawing.Point(106, 708);
+            this.btnEncript.Location = new System.Drawing.Point(105, 788);
             this.btnEncript.Name = "btnEncript";
             this.btnEncript.Size = new System.Drawing.Size(440, 65);
             this.btnEncript.TabIndex = 9;
@@ -88,16 +88,16 @@ namespace WindowsFormsApp1
             // 
             // tbResult
             // 
-            this.tbResult.Location = new System.Drawing.Point(884, 421);
+            this.tbResult.Location = new System.Drawing.Point(883, 336);
             this.tbResult.Name = "tbResult";
             this.tbResult.ReadOnly = true;
-            this.tbResult.Size = new System.Drawing.Size(703, 218);
+            this.tbResult.Size = new System.Drawing.Size(703, 406);
             this.tbResult.TabIndex = 13;
             this.tbResult.Text = "";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(884, 358);
+            this.label2.Location = new System.Drawing.Point(883, 273);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(303, 45);
             this.label2.TabIndex = 12;
@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
             // 
             // btnChoseFile
             // 
-            this.btnChoseFile.Location = new System.Drawing.Point(80, 315);
+            this.btnChoseFile.Location = new System.Drawing.Point(79, 230);
             this.btnChoseFile.Name = "btnChoseFile";
             this.btnChoseFile.Size = new System.Drawing.Size(387, 65);
             this.btnChoseFile.TabIndex = 14;
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(884, 708);
+            this.btnSave.Location = new System.Drawing.Point(883, 788);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(361, 65);
             this.btnSave.TabIndex = 15;
@@ -125,7 +125,7 @@ namespace WindowsFormsApp1
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1339, 708);
+            this.btnExit.Location = new System.Drawing.Point(1338, 788);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(248, 65);
             this.btnExit.TabIndex = 16;
