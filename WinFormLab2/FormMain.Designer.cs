@@ -36,7 +36,6 @@ namespace WindowsFormsApp1
             this.label4 = new System.Windows.Forms.Label();
             this.tbInput = new System.Windows.Forms.RichTextBox();
             this.btnEncript = new System.Windows.Forms.Button();
-            this.btnDecript = new System.Windows.Forms.Button();
             this.tbResult = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnChoseFile = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@ namespace WindowsFormsApp1
             this.tbKey.Name = "tbKey";
             this.tbKey.Size = new System.Drawing.Size(304, 40);
             this.tbKey.TabIndex = 3;
+            this.tbKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbKey_KeyPress);
             // 
             // label4
             // 
@@ -80,21 +80,11 @@ namespace WindowsFormsApp1
             // 
             this.btnEncript.Location = new System.Drawing.Point(106, 708);
             this.btnEncript.Name = "btnEncript";
-            this.btnEncript.Size = new System.Drawing.Size(270, 65);
+            this.btnEncript.Size = new System.Drawing.Size(440, 65);
             this.btnEncript.TabIndex = 9;
-            this.btnEncript.Text = "Зашифровать";
+            this.btnEncript.Text = "Зашифровать/Дешифровать";
             this.btnEncript.UseVisualStyleBackColor = true;
             this.btnEncript.Click += new System.EventHandler(this.btnEncript_Click);
-            // 
-            // btnDecript
-            // 
-            this.btnDecript.Location = new System.Drawing.Point(483, 708);
-            this.btnDecript.Name = "btnDecript";
-            this.btnDecript.Size = new System.Drawing.Size(270, 65);
-            this.btnDecript.TabIndex = 10;
-            this.btnDecript.Text = "Дешифровать";
-            this.btnDecript.UseVisualStyleBackColor = true;
-            this.btnDecript.Click += new System.EventHandler(this.btnDecript_Click);
             // 
             // tbResult
             // 
@@ -111,7 +101,7 @@ namespace WindowsFormsApp1
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(303, 45);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Полученный шифр:";
+            this.label2.Text = "Результат:";
             // 
             // btnChoseFile
             // 
@@ -153,7 +143,6 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.btnChoseFile);
             this.Controls.Add(this.tbResult);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnDecript);
             this.Controls.Add(this.btnEncript);
             this.Controls.Add(this.tbInput);
             this.Controls.Add(this.label4);
@@ -177,7 +166,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Button btnEncript;
-        private System.Windows.Forms.Button btnDecript;
 
         private System.Windows.Forms.RichTextBox tbInput;
 
