@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using System.Text;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class FormMain : Form
     {
+        private int maxBit = 1000;
         private BitArray _messageBit;
         private BitArray _registerBit;
         private BitArray _cipherBit;
+        private BitArray _keyBit;
         private byte[] _message;
         private byte[] _cipher;
         private static int _registerLength = 38;
@@ -37,7 +39,12 @@ namespace WindowsFormsApp1
             string filename = fileDialog.FileName;
             _message = System.IO.File.ReadAllBytes(filename);
             _messageBit = ByteArrayToBitArray(_message);
-            tbInput.Text = String.Join(" ", _message);
+            _keyBit = new BitArray(_messageBit.Length);
+            for (int i = 0; i < _messageBit.Length && i < maxBit; i++)
+            {
+                var j = _messageBit[i];
+                tbInput.Text += j?'1':'0';
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -52,26 +59,27 @@ namespace WindowsFormsApp1
 
         private void btnEncript_Click(object sender, EventArgs e)
         {
-            string key = tbKey.Text;
+            string key = tbRegister.Text;
             if (!CheckKeyInput(key))
                 return;
             if (tbInput.Text.Length <= 0)
                 return;
-            var fileBytes = tbInput.Text.Split(' ').Select(_ => byte.Parse(_));
-            byte[] message = fileBytes.ToArray();
             _cipherBit = EncryptData(_messageBit, _registerBit);
             _cipher = BitArrayToByteArray(_cipherBit);
-            tbResult.Text = String.Join(" ", _cipher);
-        }
-        private void btnDecript_Click(object sender, EventArgs e)
-        {
-            var fileBytes = tbInput.Text.Split(' ').Select(_ => byte.Parse(_));
-            byte[] cipher = fileBytes.ToArray();
-            string key1 = tbKey.Text;
+            for (int i = 0; i < _keyBit.Length && i < maxBit; i++)
+            {
+                var j = _keyBit[i];
+                tbKey.Text += j?'1':'0';
+            }
+            for (int i = 0; i < _cipherBit.Length && i < maxBit; i++)
+            {
+                var j = _cipherBit[i];
+                tbResult.Text += j?'1':'0';
+            }
         }
         private bool CheckKeyInput(String key)
         {
-            if (tbKey.Text.Length != _registerLength)
+            if (tbRegister.Text.Length != _registerLength)
             {
                 MessageBox.Show("Длина ключа должна быть 38 символов");
                 return false;
@@ -141,7 +149,6 @@ namespace WindowsFormsApp1
         {
             bool result = bitArray[0];
             bool newBit = bitArray[0] ^ bitArray[32] ^ bitArray[33] ^ bitArray[37];
-            
             // Сдвиг влево
             for (int j = 0; j < bitArray.Length - 1; j++)
             {
@@ -160,16 +167,19 @@ namespace WindowsFormsApp1
             BitArray result = new BitArray(message.Length);
             for (int i = 0; i < message.Length; i++)
             {
-                result[i] = message[i] ^ ShiftRegister(registerCopy);
+                bool curr = ShiftRegister(registerCopy);
+                result[i] = message[i] ^ curr;
+                _keyBit[i] = curr;
             }
             return result;
         }
 
-        private void tbKey_KeyPress(object sender, KeyPressEventArgs e)
+        private void tbRegister_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(((e.KeyChar == '0' || e.KeyChar == '1') && tbKey.Text.Length < _registerLength) || Char.IsControl(e.KeyChar))
+            if(((e.KeyChar == '0' || e.KeyChar == '1') && tbRegister.Text.Length < _registerLength) || Char.IsControl(e.KeyChar))
                 return;
             e.Handled = true;
         }
+
     }
 }

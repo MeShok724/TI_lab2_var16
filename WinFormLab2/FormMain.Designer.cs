@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.lKey1 = new System.Windows.Forms.Label();
-            this.tbKey = new System.Windows.Forms.TextBox();
+            this.tbRegister = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbInput = new System.Windows.Forms.RichTextBox();
             this.btnEncript = new System.Windows.Forms.Button();
@@ -41,6 +41,8 @@ namespace WindowsFormsApp1
             this.btnChoseFile = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbKey = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // lKey1
@@ -51,28 +53,28 @@ namespace WindowsFormsApp1
             this.lKey1.TabIndex = 2;
             this.lKey1.Text = "Введите ключ:";
             // 
-            // tbKey
+            // tbRegister
             // 
-            this.tbKey.Location = new System.Drawing.Point(397, 58);
-            this.tbKey.Name = "tbKey";
-            this.tbKey.Size = new System.Drawing.Size(518, 40);
-            this.tbKey.TabIndex = 3;
-            this.tbKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbKey_KeyPress);
+            this.tbRegister.Location = new System.Drawing.Point(397, 58);
+            this.tbRegister.Name = "tbRegister";
+            this.tbRegister.Size = new System.Drawing.Size(703, 40);
+            this.tbRegister.TabIndex = 3;
+            this.tbRegister.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRegister_KeyPress);
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(80, 155);
+            this.label4.Location = new System.Drawing.Point(79, 337);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(990, 45);
+            this.label4.Size = new System.Drawing.Size(990, 46);
             this.label4.TabIndex = 7;
             this.label4.Text = "Выберите файл для шифровани/дешифрования:";
             // 
             // tbInput
             // 
-            this.tbInput.Location = new System.Drawing.Point(79, 336);
+            this.tbInput.Location = new System.Drawing.Point(79, 476);
             this.tbInput.Name = "tbInput";
             this.tbInput.ReadOnly = true;
-            this.tbInput.Size = new System.Drawing.Size(703, 406);
+            this.tbInput.Size = new System.Drawing.Size(703, 259);
             this.tbInput.TabIndex = 8;
             this.tbInput.Text = "";
             // 
@@ -88,16 +90,16 @@ namespace WindowsFormsApp1
             // 
             // tbResult
             // 
-            this.tbResult.Location = new System.Drawing.Point(883, 336);
+            this.tbResult.Location = new System.Drawing.Point(883, 476);
             this.tbResult.Name = "tbResult";
             this.tbResult.ReadOnly = true;
-            this.tbResult.Size = new System.Drawing.Size(703, 406);
+            this.tbResult.Size = new System.Drawing.Size(703, 259);
             this.tbResult.TabIndex = 13;
             this.tbResult.Text = "";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(883, 273);
+            this.label2.Location = new System.Drawing.Point(883, 428);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(303, 45);
             this.label2.TabIndex = 12;
@@ -105,7 +107,7 @@ namespace WindowsFormsApp1
             // 
             // btnChoseFile
             // 
-            this.btnChoseFile.Location = new System.Drawing.Point(79, 230);
+            this.btnChoseFile.Location = new System.Drawing.Point(80, 386);
             this.btnChoseFile.Name = "btnChoseFile";
             this.btnChoseFile.Size = new System.Drawing.Size(387, 65);
             this.btnChoseFile.TabIndex = 14;
@@ -133,6 +135,23 @@ namespace WindowsFormsApp1
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(80, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(255, 33);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Полученный ключ:";
+            // 
+            // tbKey
+            // 
+            this.tbKey.Location = new System.Drawing.Point(397, 146);
+            this.tbKey.Name = "tbKey";
+            this.tbKey.ReadOnly = true;
+            this.tbKey.Size = new System.Drawing.Size(703, 156);
+            this.tbKey.TabIndex = 13;
+            this.tbKey.Text = "";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
@@ -141,12 +160,14 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnChoseFile);
+            this.Controls.Add(this.tbKey);
             this.Controls.Add(this.tbResult);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEncript);
             this.Controls.Add(this.tbInput);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbKey);
+            this.Controls.Add(this.tbRegister);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lKey1);
             this.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -156,6 +177,10 @@ namespace WindowsFormsApp1
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.TextBox tbRegister;
+
+        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Button btnExit;
 
@@ -171,7 +196,7 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.Label label4;
 
-        private System.Windows.Forms.TextBox tbKey;
+        private System.Windows.Forms.RichTextBox tbKey;
 
         private System.Windows.Forms.Label lKey1;
 
